@@ -1,0 +1,233 @@
+/* Global Styles */
+body {
+    font-family: Poppins, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  h1, h2, h3 {
+    color: #333;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* HomePage Layout */
+  .HomePage {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    background: linear-gradient(180deg, #34A853 0%, white 69%, #C5C5C5 100%);
+  }
+  
+  .Button {
+    width: 450px;
+    height: 122px;
+    padding: 12.5px 111.5px;
+    position: absolute;
+    left: 338px;
+    top: 690px;
+    background: #34A853;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    opacity: 0.25;
+  }
+  
+  .SignUp {
+    text-align: center;
+    color: white;
+    font-size: 64px;
+    font-weight: 500;
+  }
+  
+  .Logo {
+    width: 345px;
+    height: 345px;
+    left: 788px;
+    top: 195px;
+    position: absolute;
+    background: #C4C4C4;
+    border-radius: 9999px;
+  }
+  
+  /* Login Page Styling */
+  .PatientLogin, .DoctorLogin {
+    width: 1920px;
+    height: 1080px;
+    padding-left: 640px;
+    padding-right: 640px;
+    padding-top: 122px;
+    padding-bottom: 122px;
+    background: linear-gradient(180deg, #D9D7D7 11%, white 89%, rgba(56.69, 203.01, 95.79, 0.81) 100%);
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+  }
+  
+  .Frame301 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+  }
+  
+  .Frame300 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 48px;
+  }
+  
+  .Frame297 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  
+  .Frame243 {
+    width: 528px;
+    padding-bottom: 3px;
+  }
+  
+  .TextField {
+    width: 528px;
+    height: 56px;
+    border-radius: 12px;
+    border: 1px #666666 solid;
+  }
+  
+  .Frame298 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .Frame299 {
+    width: 528px;
+    padding-left: 354px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  
+  .ForgotPassword, .SignupLink {
+    color: #34A853;
+    text-decoration: none;
+  }
+  
+  .Divider {
+    width: 640px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 23px;
+  }
+  
+  .Divider div {
+    height: 2px;
+    background: #666666;
+  }
+  
+  .Or {
+    color: #666666;
+    font-size: 22px;
+    font-family: Avenir;
+    font-weight: 400;
+  }
+  
+  /* Buttons */
+  .Button {
+    width: 528px;
+    height: 64px;
+    padding-top: 15px;
+    padding-bottom: 16px;
+    background: #34A853;
+    border-radius: 40px;
+    justify-content: center;
+    align-items: center;
+    display: inline-flex;
+    opacity: 0.25;
+  }
+  
+  .SignUp {
+    text-align: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  
+  /* Form Elements */
+  .TextField input {
+    padding: 10px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid #666;
+    font-size: 16px;
+  }
+  
+  .TextField input:focus {
+    outline: none;
+    border-color: #34A853;
+  }
+  
+  /* Error Messages */
+  .ErrorMessage {
+    color: #666666;
+    font-size: 14px;
+    font-family: Poppins;
+  }
+  
+  /* Profile Page */
+  .PatientProfile {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    background: linear-gradient(180deg, #D9D7D7 11%, white 89%, rgba(56.69, 203.01, 95.79, 0.81) 100%);
+  }
+  
+  .PatientProfile .ProfileText {
+    text-align: center;
+    color: black;
+    font-size: 36px;
+    font-weight: 500;
+  }
+  
+  /* Appointment Page */
+  .PatientAppointment {
+    width: 1920px;
+    height: 1080px;
+    position: relative;
+    background: linear-gradient(180deg, #D9D7D7 11%, white 89%, rgba(56.69, 203.01, 95.79, 0.81) 100%);
+  }
+  
+  .AppointmentTimeSlot {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+  
+  .Line1, .Line3, .Line4, .Line5 {
+    width: 25px;
+    height: 2px;
+    background-color: #FF0000;
+    border-radius: 1px;
+  }
+  
+  .Ellipse {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #FF0000;
+  }
+  
