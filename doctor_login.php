@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="doctor_login.css">
     <title>Doctor Login</title>
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
     <div class="login-page">

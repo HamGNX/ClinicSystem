@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="patient_register.css">
     <title>Patient Registration</title>
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
     <div class="signup-page">

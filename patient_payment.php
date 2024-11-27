@@ -35,6 +35,7 @@ $result_payments = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment List</title>
     <link rel="stylesheet" href="patient_payment.css">
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
     <div class="dashboard-container">

@@ -71,6 +71,7 @@ $result_appointments = $stmt_appointments->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Dashboard</title>
     <link rel="stylesheet" href="patient_dashboard.css">
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
     <div class="dashboard-container">

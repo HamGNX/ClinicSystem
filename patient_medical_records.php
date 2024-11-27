@@ -36,6 +36,7 @@ $result_records = $stmt->get_result();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Records</title>
     <link rel="stylesheet" href="patient_medical_records.css">
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
     <div class="dashboard-container">

@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['appointment_id'], $_PO
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medical Records</title>
     <link rel="stylesheet" href="doctor_medical_record.css">
+    <link rel="icon" type="image/jpg" href="logo.jpg">
 </head>
 <body>
     <div class="dashboard-container">
