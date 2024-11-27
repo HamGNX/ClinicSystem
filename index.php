@@ -4,16 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="design.css">
+    <link rel="stylesheet" href="index.css">
     <title>Clinic Appointment System</title>
 </head>
-<body class="HomePage">
-    <div class="container">
-        <div class="Logo"></div>
-        <h1>Welcome to the Clinic Appointment System</h1>
+<body>
+    <div class="homepage">
+        <div class="logo"></div>
         <div class="button-container">
-            <a href="php/patient_login.php" class="Button SignUp">Patient Login</a>
-            <a href="php/doctor_login.php" class="Button SignUp">Doctor Login</a>
+            <a href="patient_login.php" class="button patient">Patient</a>
+            <a href="doctor_login.php" class="button doctor">Doctor</a>
         </div>
     </div>
 </body>

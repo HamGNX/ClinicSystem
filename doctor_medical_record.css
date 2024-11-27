@@ -1,0 +1,108 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #D9D7D7 11%, white 89%, rgba(56, 203, 96, 0.81) 100%);
+    min-height: 100vh;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 25%;
+    background-color: #34A853;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.sidebar-button {
+    width: 80%;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    background-color: #2c8e44;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-button:hover {
+    background-color: #1f6e33;
+}
+
+/* Content */
+.content {
+    width: 75%;
+    padding: 30px;
+    background-color: white;
+    text-align: left;
+}
+
+.content h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+.content h2 {
+    font-size: 28px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.content h3 {
+    font-size: 24px;
+    color: #777;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* Appointment Card */
+.appointment-card {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.appointment-card p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.drop-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #e63946;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.drop-button:hover {
+    background-color: #c5303b;
+}
