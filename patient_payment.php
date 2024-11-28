@@ -5,6 +5,21 @@ include('connect.php');
 // Fetch patient ID from session
 $patient_id = $_SESSION['patient_id'];
 
+// Automatically create payments for past appointments
+$create_payments_query = "
+    INSERT INTO Payment (Appointment_ID, Amount, Payment_Status)
+    SELECT a.Appointment_ID, 100.00 AS Amount, 'Completed' AS Payment_Status
+    FROM Appointment a
+    LEFT JOIN Payment p ON a.Appointment_ID = p.Appointment_ID
+    WHERE a.Patient_ID = ? 
+    AND a.Appointment_Date < NOW() 
+    AND p.Payment_ID IS NULL
+";
+
+$stmt_create_payments = $mysqli->prepare($create_payments_query);
+$stmt_create_payments->bind_param("i", $patient_id);
+$stmt_create_payments->execute();
+
 // Fetch payment details linked to the patient's appointments
 $query_payments = "
     SELECT 
@@ -55,8 +70,8 @@ $result_payments = $stmt->get_result();
                 <?php while ($payment = $result_payments->fetch_assoc()): ?>
                     <div class="payment-card">
                         <p><b>Appointment Date:</b> <?php echo date('d M Y, H:i', strtotime($payment['Appointment_Date'])); ?></p>
-                        <p><b>Amount:</b> <?php echo number_format($payment['About'], 2); ?> USD</p>
-                        <p><b>Status:</b> <?php echo htmlspecialchars($payment['Status']); ?></p>
+                        <p><b>Amount:</b> <?php echo number_format($payment['Amount'], 2); ?> THB</p>
+                        <p><b>Status:</b> <?php echo htmlspecialchars($payment['Payment_Status']); ?></p>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>

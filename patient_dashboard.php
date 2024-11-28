@@ -40,9 +40,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
     exit;
 }
 
+// Handle appointment drop
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['drop_appointment'])) {
+    $appointment_id = $_POST['appointment_id'];
+
+    // Delete related medical records first
+    $delete_medical_records = "DELETE FROM Medical_Record WHERE Appointment_ID = ?";
+    $stmt_delete_medical = $mysqli->prepare($delete_medical_records);
+    $stmt_delete_medical->bind_param("i", $appointment_id);
+    $stmt_delete_medical->execute();
+
+    // Delete the appointment
+    $delete_appointment = "DELETE FROM Appointment WHERE Appointment_ID = ?";
+    $stmt_delete_appointment = $mysqli->prepare($delete_appointment);
+    $stmt_delete_appointment->bind_param("i", $appointment_id);
+    $stmt_delete_appointment->execute();
+
+    // Refresh the page to display updated records
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
 // Fetch all appointments for the patient
 $query_appointments = "
     SELECT 
+        a.Appointment_ID,
         a.Appointment_Date, 
         d.FName AS doctor_first_name, 
         d.LName AS doctor_last_name, 
@@ -86,43 +108,43 @@ $result_appointments = $stmt_appointments->get_result();
 
         <!-- Content -->
         <div class="content">
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <h1>Welcome!!!</h1>
-        <h1>⠀</h1>
-        <p><b>Full Name:</b> <?php echo htmlspecialchars($patient['FName'] . ' ' . $patient['LName']); ?></p>
-        <p><b>Age:</b> <?php echo $age; ?></p>
-        <form method="POST">
-            <label for="dob"><b>Date of Birth:</b></label>
-            <input type="date" id="dob" name="dob" value="<?php echo !empty($patient['DOB']) ? htmlspecialchars($patient['DOB']) : ''; ?>" required>
-            <br><br>
-            <label for="phone"><b>Phone Number:</b></label>
-            <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($patient['Phone']); ?>" required>
-            <br><br>
-            <button type="submit" name="update_profile">Update</button>
-        </form>
-    </div>
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <h1>Welcome!!!</h1>
+                <h1>⠀</h1>
+                <p><b>Full Name:</b> <?php echo htmlspecialchars($patient['FName'] . ' ' . $patient['LName']); ?></p>
+                <p><b>Age:</b> <?php echo $age; ?></p>
+                <form method="POST">
+                    <label for="dob"><b>Date of Birth:</b></label>
+                    <input type="date" id="dob" name="dob" value="<?php echo !empty($patient['DOB']) ? htmlspecialchars($patient['DOB']) : ''; ?>" required>
+                    <br><br>
+                    <label for="phone"><b>Phone Number:</b></label>
+                    <input type="text" id="phone" name="phone" value="<?php echo htmlspecialchars($patient['Phone']); ?>" required>
+                    <br><br>
+                    <button type="submit" name="update_profile">Update</button>
+                </form>
+            </div>
 
-    <!-- Appointments Section -->
-    <div class="appointment-container">
-        <h2>All Appointments</h2>
-        <?php if ($result_appointments->num_rows > 0): ?>
-            <?php while ($appointment = $result_appointments->fetch_assoc()): ?>
-                <div class="appointment-card">
-                    <p><b>Date:</b> <?php echo date('d M Y, H:i', strtotime($appointment['Appointment_Date'])); ?></p>
-                    <p><b>Doctor:</b> <?php echo htmlspecialchars($appointment['doctor_first_name'] . ' ' . $appointment['doctor_last_name']); ?></p>
-                    <p><b>Specialty:</b> <?php echo htmlspecialchars($appointment['Specialty_Name']); ?></p>
-                    <form method="POST" action="patient_drop_appointment.php">
-                        <input type="hidden" name="appointment_date" value="<?php echo htmlspecialchars($appointment['Appointment_Date']); ?>">
-                        <button type="submit">Drop</button>
-                    </form>
-                </div>
-            <?php endwhile; ?>
-        <?php else: ?>
-            <p>No appointments found.</p>
-        <?php endif; ?>
-    </div>
-</div>
+            <!-- Appointments Section -->
+            <div class="appointment-container">
+                <h2>All Appointments</h2>
+                <?php if ($result_appointments->num_rows > 0): ?>
+                    <?php while ($appointment = $result_appointments->fetch_assoc()): ?>
+                        <div class="appointment-card">
+                            <p><b>Date:</b> <?php echo date('d M Y, H:i', strtotime($appointment['Appointment_Date'])); ?></p>
+                            <p><b>Doctor:</b> <?php echo htmlspecialchars($appointment['doctor_first_name'] . ' ' . $appointment['doctor_last_name']); ?></p>
+                            <p><b>Specialty:</b> <?php echo htmlspecialchars($appointment['Specialty_Name']); ?></p>
+                            <form method="POST">
+                                <input type="hidden" name="appointment_id" value="<?php echo htmlspecialchars($appointment['Appointment_ID']); ?>">
+                                <button type="submit" name="drop_appointment" class="drop-button">Drop Appointment</button>
+                            </form>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p>No appointments found.</p>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
 </body>
 </html>
