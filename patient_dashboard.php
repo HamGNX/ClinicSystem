@@ -129,15 +129,21 @@ $result_appointments = $stmt_appointments->get_result();
             <div class="appointment-container">
                 <h2>All Appointments</h2>
                 <?php if ($result_appointments->num_rows > 0): ?>
-                    <?php while ($appointment = $result_appointments->fetch_assoc()): ?>
+                    <?php 
+                    $current_time = new DateTime(); // Get the current time
+                    while ($appointment = $result_appointments->fetch_assoc()): 
+                        $appointment_time = new DateTime($appointment['Appointment_Date']);
+                    ?>
                         <div class="appointment-card">
                             <p><b>Date:</b> <?php echo date('d M Y, H:i', strtotime($appointment['Appointment_Date'])); ?></p>
                             <p><b>Doctor:</b> <?php echo htmlspecialchars($appointment['doctor_first_name'] . ' ' . $appointment['doctor_last_name']); ?></p>
                             <p><b>Specialty:</b> <?php echo htmlspecialchars($appointment['Specialty_Name']); ?></p>
-                            <form method="POST">
-                                <input type="hidden" name="appointment_id" value="<?php echo htmlspecialchars($appointment['Appointment_ID']); ?>">
-                                <button type="submit" name="drop_appointment" class="drop-button">Drop Appointment</button>
-                            </form>
+                            <?php if ($appointment_time > $current_time): ?>
+                                <form method="POST">
+                                    <input type="hidden" name="appointment_id" value="<?php echo htmlspecialchars($appointment['Appointment_ID']); ?>">
+                                    <button type="submit" name="drop_appointment" class="drop-button">Drop Appointment</button>
+                                </form>
+                            <?php endif; ?>
                         </div>
                     <?php endwhile; ?>
                 <?php else: ?>
